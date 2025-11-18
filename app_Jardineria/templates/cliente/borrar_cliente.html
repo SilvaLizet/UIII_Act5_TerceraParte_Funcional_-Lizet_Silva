@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Borrar Cliente{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-danger">Borrar Cliente</h2>
+<div class="alert alert-danger p-4 border rounded shadow-sm">
+    ¿Estás seguro de que deseas borrar al cliente <strong>{{ cliente.nombre }} {{ cliente.apellido }}</strong> (ID: {{ cliente.id }})?
+    Esta acción eliminará todos los contratos asociados a este cliente y <span class="fw-bold">no se puede deshacer</span>.
+</div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger me-2"><i class="fas fa-trash-alt me-2"></i>Sí, Borrar</button>
+    <a href="{% url 'ver_clientes' %}" class="btn btn-secondary"><i class="fas fa-arrow-left me-2"></i>Cancelar</a>
+</form>
+{% endblock %}

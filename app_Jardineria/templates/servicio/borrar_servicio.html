@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Borrar Servicio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-danger">Borrar Servicio</h2>
+<div class="alert alert-danger p-4 border rounded shadow-sm">
+    ¿Estás seguro de que deseas borrar el servicio <strong>{{ servicio.nombre_servicio }}</strong> (ID: {{ servicio.id }})?
+    Esta acción eliminará los contratos asociados a este servicio y <span class="fw-bold">no se puede deshacer</span>.
+</div>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger me-2"><i class="fas fa-trash-alt me-2"></i>Sí, Borrar</button>
+    <a href="{% url 'ver_servicios' %}" class="btn btn-secondary"><i class="fas fa-arrow-left me-2"></i>Cancelar</a>
+</form>
+{% endblock %}

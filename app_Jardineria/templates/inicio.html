@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Inicio - Jardinería{% endblock %}
+
+{% block content %}
+<div class="text-center my-5 p-5 bg-light rounded shadow-sm" style="background-image: url('{% static 'app_Jardineria/img/jardineria_bg.jpg' %}'); background-size: cover; background-position: center; min-height: 400px; display: flex; align-items: center; justify-content: center;">
+    <div class="p-4 rounded" style="background-color: rgba(255, 255, 255, 0.85);">
+        <h1 class="display-4 text-success">Bienvenido a la Jardinería</h1>
+        <p class="lead text-dark">Tu solución integral para el cuidado y embellecimiento de tus espacios verdes.</p>
+        <p class="text-dark">Explora nuestras secciones para administrar clientes, empleados y servicios, y visualiza los contratos para un control total.</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Actualizar Cliente{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-success">Actualizar Cliente: {{ cliente.nombre }} {{ cliente.apellido }}</h2>
+<form method="post" class="p-4 border rounded shadow-sm bg-white">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" value="{{ cliente.nombre }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" name="apellido" value="{{ cliente.apellido }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" id="telefono" name="telefono" value="{{ cliente.telefono }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" value="{{ cliente.email }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" name="direccion" value="{{ cliente.direccion }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="ciudad" class="form-label">Ciudad</label>
+        <input type="text" class="form-control" id="ciudad" name="ciudad" value="{{ cliente.ciudad }}" required>
+    </div>
+    <div class="mb-3">
+        <label for="codigo_postal" class="form-label">Código Postal</label>
+        <input type="text" class="form-control" id="codigo_postal" name="codigo_postal" value="{{ cliente.codigo_postal }}" required>
+    </div>
+    <button type="submit" class="btn btn-success me-2"><i class="fas fa-save me-2"></i>Actualizar Cliente</button>
+    <a href="{% url 'ver_clientes' %}" class="btn btn-secondary"><i class="fas fa-arrow-left me-2"></i>Cancelar</a>
+</form>
+{% endblock %}

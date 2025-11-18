@@ -1,0 +1,47 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-success-subtle"> {# Color de fondo verde suave #}
+    <div class="container-fluid">
+        <a class="navbar-brand text-success" href="{% url 'inicio_jardineria' %}">
+            <i class="fas fa-seedling"></i> Sistema de Administración Jardinería
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'inicio_jardineria' %}"><i class="fas fa-home"></i> Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCliente" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-friends"></i> Cliente
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownCliente">
+                        <li><a class="dropdown-item" href="{% url 'agregar_cliente' %}">Agregar Cliente</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_clientes' %}">Ver Clientes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEmpleado" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-hard-hat"></i> Empleado
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownEmpleado">
+                        <li><a class="dropdown-item" href="{% url 'agregar_empleado' %}">Agregar Empleado</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_empleados' %}">Ver Empleados</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownServicio" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-hand-holding-heart"></i> Servicio
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownServicio">
+                        <li><a class="dropdown-item" href="{% url 'agregar_servicio' %}">Agregar Servicio</a></li>
+                        <li><a class="dropdown-item" href="{% url 'ver_servicios' %}">Ver Servicios</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ver_contratos' %}"><i class="fas fa-file-contract"></i> Contratos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

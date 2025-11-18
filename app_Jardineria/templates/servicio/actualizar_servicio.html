@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle Servicio{% endblock %}
+
+{% block content %}
+<h2 class="mb-4 text-success">Detalles del Servicio: {{ servicio.nombre_servicio }}</h2>
+<div class="card p-4 border-success shadow-sm">
+    <div class="card-body">
+        <p class="card-text"><strong>ID:</strong> {{ servicio.id }}</p>
+        <p class="card-text"><strong>Nombre:</strong> {{ servicio.nombre_servicio }}</p>
+        <p class="card-text"><strong>Descripción:</strong> {{ servicio.descripcion }}</p>
+        <p class="card-text"><strong>Precio:</strong> ${{ servicio.precio|floatformat:2 }}</p>
+        <p class="card-text"><strong>Duración Estimada (horas):</strong> {{ servicio.duracion_estimada_horas|floatformat:2 }}</p>
+        <p class="card-text"><strong>Fecha de Creación:</strong> {{ servicio.fecha_creacion|date:"d/m/Y H:i" }}</p>
+        <p class="card-text"><strong>Activo:</strong> 
+            {% if servicio.activo %}
+                <span class="badge bg-success">Sí</span>
+            {% else %}
+                <span class="badge bg-danger">No</span>
+            {% endif %}
+        </p>
+        <p class="card-text"><strong>Tipo de Servicio:</strong> {{ servicio.tipo_servicio }}</p>
+
+        <h4 class="mt-4 text-success">Contratos que Incluyen este Servicio</h4>
+        {% if contratos_servicio %}
+            <ul class="list-group">
+                {% for contrato in contratos_servicio %}
+                    <li class="list-group-item">
+                        Contrato #{{ contrato.id }} - Cliente: <strong>{{ contrato.cliente.nombre }} {{ contrato.cliente.apellido }}</strong>
+                        (Programado para: {{ contrato.fecha_programada|date:"d/m/Y" }}) - Estado: {{ contrato.get_estado_display }}
+                        <br>
+                        Empleados asignados: 
+                        {% for empleado in contrato.empleados.all %}
+                            {{ empleado.nombre }} {{ empleado.apellido }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                            Ninguno
+                        {% endfor %}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>Este servicio no está incluido en ningún contrato.</p>
+        {% endif %}
+
+        <div class="mt-4">
+            <a href="{% url 'actualizar_servicio' servicio.id %}" class="btn btn-warning me-2"><i class="fas fa-edit me-2"></i>Editar Servicio</a>
+            <a href="{% url 'ver_servicios' %}" class="btn btn-secondary"><i class="fas fa-arrow-left me-2"></i>Volver a Servicios</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
